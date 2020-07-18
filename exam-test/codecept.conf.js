@@ -1,15 +1,8 @@
-const { setHeadlessWhen } = require('@codeceptjs/configure');
-
-// turn on headless mode when running with HEADLESS=true environment variable
-// HEADLESS=true npx codecept run
-setHeadlessWhen(process.env.HEADLESS);
-
 exports.config = {
-  tests: './*_test.js',
   output: './output',
   helpers: {
     Puppeteer: {
-      url: 'http://localhost:3000',
+      url: 'http://localhost:3010',
       show: true,
       windowSize: '1200x900'
     }
@@ -17,15 +10,23 @@ exports.config = {
   include: {
     I: './steps_file.js'
   },
-  bootstrap: null,
   mocha: {},
-  name: 'exam-test',
+  bootstrap: null,
+  teardown: null,
+  hooks: [],
+  gherkin: {
+    features: './features/*.feature',
+    steps: ['./step_definitions/steps.js']
+  },
   plugins: {
-    retryFailedStep: {
-      enabled: true
-    },
     screenshotOnFail: {
       enabled: true
+    },
+    retryFailedStep: {
+      enabled: true
     }
-  }
+  },
+  tests: './*_test.js',
+  transaction: 'ru-RU',
+  name: 'exam-test'
 }
