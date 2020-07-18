@@ -143,7 +143,7 @@ class OnePlace extends Component {
                                 </Typography>
                             </Grid>
                             <Grid item>
-                                {place.image && <img style={{width: 300,borderRadius: '5px'}} src={apiURL + '/uploads/' + place.image} alt="image"/>}
+                                {place.image && <img style={{width: 300,borderRadius: '5px'}} src={apiURL + '/uploads/' + place.image} alt="placeImg"/>}
 
                             </Grid>
                         </Grid>
@@ -161,7 +161,7 @@ class OnePlace extends Component {
                                 {
                                     images.map(image => (
                                         <Grid item key={image._id} style={{margin: '0 10px',position: 'relative'}}>
-                                            <img style={{width: 300, height: '100%', borderRadius: '5px'}} src={apiURL + '/uploads/' + image.image} alt='Image' />
+                                            <img style={{width: 300, height: '100%', borderRadius: '5px'}} src={apiURL + '/uploads/' + image.image} alt='' />
                                             {user && user.role === 'admin' &&
                                             <Button
                                                 style={{position: 'absolute', top: 0, left: 0}}
