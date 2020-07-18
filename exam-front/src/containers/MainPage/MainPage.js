@@ -92,7 +92,7 @@ class MainPage extends Component {
                                                 title="Place image"
                                             />
                                             <CardContent>
-                                                <Typography gutterBottom variant="h5" component="h2">
+                                                <Typography gutterBottom variant="h5" component="h2" style={{textAlign: 'center'}}>
                                                     {place.title}
                                                 </Typography>
                                                 {this.method('rating', place._id)}
