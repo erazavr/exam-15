@@ -1,0 +1,42 @@
+#!/bin/bash
+
+REL_PATH=`dirname $0`
+cd ${REL_PATH}
+CURRENT_DIR=`pwd`
+
+echo ${CURRENT_DIR}
+cd ${CURRENT_DIR}
+
+echo '##################'
+echo '# Запуск тестов! #'
+echo '##################'
+
+cd ../exam-back
+
+
+echo "# Запуск фикстур"
+NODE_ENV=test npm run seed
+
+echo '# Запуск API сервера в тестовом режиме'
+pm2 start 'npm run start:test' --name='exam-back-test'
+
+echo '# Запуск frontend в тестовом режиме'
+cd ../exam-front
+pm2 start 'npm run start:test' --name='exam-front-test'
+
+while ! nc -z localhost 3010; do
+  sleep 0.1
+done
+
+echo '# Запуск тестов'
+cd ../exam-test
+echo `pwd`
+npx codeceptjs run --steps $@
+EXIT_CODE=$?
+
+echo "EXIT_CODE=${EXIT_CODE}"
+
+echo "# Удаляем тестовые процессы"
+pm2 kill
+
+exit ${EXIT_CODE}
