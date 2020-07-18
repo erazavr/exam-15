@@ -101,12 +101,19 @@ class AddRecipe extends Component {
                                         />
                                     </Grid>
                                     <Grid item>
-                                        <FormControlLabel
-                                            control={
-                                                <Checkbox checked={this.state.checked} onChange={this.checkboxChangeHandler} value={this.state.checked} required/>
-                                            }
-                                            label="Я согласен"
-                                        />
+                                        <Grid item>
+                                            <span>Отправляя эту форму, вы соглашаетесь, что следующая информация будет передана в открытый доступ!</span>
+                                        </Grid>
+
+                                        <Grid item>
+                                            <FormControlLabel
+                                                control={
+                                                    <Checkbox checked={this.state.checked} onChange={this.checkboxChangeHandler} value={this.state.checked} required/>
+                                                }
+                                                label="Я согласен"
+                                            />
+                                        </Grid>
+
                                     </Grid>
                                     <Grid item xs>
                                         <Button color='primary' type='submit' variant='contained'>
