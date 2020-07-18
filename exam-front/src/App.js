@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import {ToastContainer} from "react-toastify";
+import {Container} from "reactstrap";
+import AppToolbar from "./components/UI/Toolbar/AppToolbar";
+import {CssBaseline} from "@material-ui/core";
+import Routes from "./Routes";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+        <CssBaseline/>
+        <ToastContainer autoClose={2000}/>
+        <header>
+          <AppToolbar/>
+        </header>
+        <Container className='mt-5'>
+          <Routes/>
+        </Container>
+      </>
   );
-}
+};
 
 export default App;
