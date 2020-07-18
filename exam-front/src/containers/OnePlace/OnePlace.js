@@ -266,6 +266,7 @@ class OnePlace extends Component {
                                             value={this.state.comment}
                                             onChange={this.inputChangeHandler}
                                             multiline={true}
+                                            required={true}
                                         />
                                     </Grid>
                                     <AddComment
