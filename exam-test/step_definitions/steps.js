@@ -14,8 +14,7 @@ When('я заполняю поля формы:', table => {
     tableData.forEach(row => {
         if (row[0] === 'image') {
             I.attachFile(row[0], row[1]);
-        }
-        if (row[0] === 'qof' || row[0] === 'sq' || row[0] === 'interior') {
+        }else if (row[0] === 'qof' || row[0] === 'sq' || row[0] === 'interior') {
             I.selectOption(row[0], row[1])
         }
         else {
