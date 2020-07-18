@@ -134,13 +134,13 @@ class OnePlace extends Component {
 
                     <Paper>
                         <Grid container className={classes.main} justify='space-between'>
-                            <Grid item>
+                            <Grid item style={{width: '60%'}}>
                                 <Typography gutterBottom variant="h3" component="h2">
                                     {place.title && place.title}
                                 </Typography>
-                                <Typography gutterBottom variant="h5" component="h2">
+                                <h3>
                                     {place.description && place.description}
-                                </Typography>
+                                </h3>
                             </Grid>
                             <Grid item>
                                 {place.image && <img style={{width: 300,borderRadius: '5px'}} src={apiURL + '/uploads/' + place.image} alt="placeImg"/>}
